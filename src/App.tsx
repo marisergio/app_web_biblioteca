@@ -28,10 +28,16 @@ function App() {
       <div className={style.container}>
         <Sidebar />
         <main className={style.content}>
-          <h2>Livros</h2>
+          <h2>Acervo</h2>
           <div className={style.bookList}>
             {livros.map(livro => (
-              <CardList autor={livro.autor} titulo={livro.titulo} key={livro.id} className={style.book} />
+              <CardList 
+                ano={livro.ano}
+                autor={livro.autor} 
+                titulo={livro.titulo} 
+                key={livro.id} 
+                className={style.book} 
+              />
             ))}
             </div>
         </main>

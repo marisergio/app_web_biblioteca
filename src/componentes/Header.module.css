@@ -8,9 +8,14 @@
     width: 100%;
 }
 
-.logo {
-    font-size: 20px;
+.appName {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
     font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 10px rgba(4, 4, 4, 0.3);
 }
 
 .headerRight {
@@ -20,12 +25,12 @@
 }
 
 .searchBar {
-    width: 200px;
+    width: 36rem;
 }
 
 .searchBar input {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     border-radius: 5px;
     border: none;
 }
@@ -37,7 +42,7 @@
 .profileButton {
     background-color: var(--brueAuxiliar);
     color: white;
-    padding: 8px 12px;
+    padding: 13px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
