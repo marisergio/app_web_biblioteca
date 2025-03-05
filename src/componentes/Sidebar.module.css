@@ -1,0 +1,30 @@
+.sidebar {
+    width: 15%;
+    background-color: var(--blue);
+    color: white;
+    padding: 1px 0;
+  }
+  
+.menuItem {
+    display: block;
+    padding: 10px;
+    margin: 2px 0;
+    background-color: var(--cinzaClaro);
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--cinzaEscuro);
+}
+  
+  .menuItem:hover {
+    background-color: var(--azulClaro);
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+  }
+  

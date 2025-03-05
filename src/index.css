@@ -1,0 +1,19 @@
+:root{
+  --blue: #3176B1;
+  --azulClaro: #c3dcf2;
+  --brueAuxiliar: #105a9b;
+  --cinza: #e6e8e9;
+  --cinzaClaro: #f4f4f4;
+  --cinzaEscuro: #636464;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: var(--cinzaClaro);
+}
