@@ -1,12 +1,22 @@
 import style from './Header.module.css';
 
-export function Header() {
+export function Header({setFiltro}) {
+
+    function filtrar(event){
+        event.preventDefault();
+        const filtro = event.target.filtrar.value;
+        console.log(filtro);
+        event.target.filtrar.value = '';
+    }
+
     return (
         <header className={style.header}>
             <h1 className={style.appName}>LITERA</h1>
             <div className={style.headerRight}>
             <div className={style.searchBar}>
-                <input type="text" placeholder="Pesquisar..." />
+                <form onSubmit={filtrar}>
+                    <input name="filtrar" type="text" placeholder="Pesquisar..." onChange={(e)=>setFiltro(e.target.value)} />
+                </form>
             </div>
             <div className={style.profileMenu}>
                 <button className={style.profileButton}>PERFIL</button>

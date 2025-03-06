@@ -3,8 +3,11 @@ import style from  './App.module.css'
 import { Header } from './componentes/Header'
 import { Sidebar } from './componentes/Sidebar'
 import { CardList } from './componentes/CardList'
+import { useState } from 'react'
 
 function App() {
+
+  const [filtro, setFiltro] = useState('')
 
   const livros = [
     { id: 1, titulo: 'Clean Architecture', autor: 'Robert C. Martin', ano: 2017 },
@@ -21,16 +24,17 @@ function App() {
 ];
 
 
+const livrosFiltrados = livros.filter(livro => livro.titulo.toLowerCase().includes(filtro.toLowerCase()))
 
   return (
     <div>
-      <Header />
+      <Header setFiltro={setFiltro} />
       <div className={style.container}>
         <Sidebar />
         <main className={style.content}>
           <h2>Acervo</h2>
           <div className={style.bookList}>
-            {livros.map(livro => (
+            {livrosFiltrados.map(livro => (
               <CardList 
                 ano={livro.ano}
                 autor={livro.autor} 
