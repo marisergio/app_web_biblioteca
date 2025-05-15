@@ -1,6 +1,10 @@
+import { useContext } from 'react';
+import { LivroContext } from '../contexts/LivroContext';
 import style from './Header.module.css';
 
-export function Header({ setFiltro }) {
+export function Header() {
+
+      const { setFiltro } = useContext(LivroContext)
 
     function filtrar(event) {
         event.preventDefault();
