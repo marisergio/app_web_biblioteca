@@ -9,11 +9,11 @@ function App() {
   const { livros, filtro } = useContext(LivroContext)
 
 
-const livrosFiltrados = livros.filter(livro => livro.titulo.toLowerCase().includes(filtro.toLowerCase()))
+  const livrosFiltrados = livros.filter(livro => livro.titulo.toLowerCase().includes(filtro.toLowerCase()))
 
   return (
     <BrowserRouter>
-        <Router livrosFiltrados={livrosFiltrados} />
+      <Router livrosFiltrados={livrosFiltrados} />
     </BrowserRouter>
   )
 }
