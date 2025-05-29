@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import style from './FormLivro.module.css'
 import { api } from '../api/setupApi'
 import { useNavigate } from 'react-router-dom'
+import { LivroContext } from '../contexts/LivroContext';
+
 
 export function FormLivro() {
 
     const [message, setMessage] = useState('')
     const navigate = useNavigate()
+    const { addLivro } = useContext(LivroContext);
 
     const [formLivro, setFormLivro] = useState({ titulo: '', autor: '', editora: '', ano: '' })
 
@@ -17,7 +20,7 @@ export function FormLivro() {
             const response = await api.post('/livros', formLivro)
             console.log('Livro salvo com sucesso:', response.data);
             setMessage('Livro salvo com sucesso')
-           // adicionarLivro(response.data);
+           addLivro({id: response.data, ...formLivro});
 
            setTimeout(()=>{
                 navigate('/');

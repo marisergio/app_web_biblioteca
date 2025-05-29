@@ -13,6 +13,9 @@
     margin: 10px 0;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .titulo {
@@ -22,8 +25,41 @@
     margin-bottom: 6px;
 }
 
-.ano{
+.ano {
     font-size: 14px;
     color: var(--cinzaEscuro);
     margin-top: 4px;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.actions button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btnEditar {
+    background-color: #3498db;
+    color: white;
+}
+
+.btnEditar:hover {
+    background-color: #2980b9;
+}
+
+.btnExcluir {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btnExcluir:hover {
+    background-color: #c0392b;
 }

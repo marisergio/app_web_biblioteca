@@ -6,10 +6,12 @@ import { LivroContext } from './contexts/LivroContext'
 
 function App() {
 
-  const { livros, filtro } = useContext(LivroContext)
+  const { livros, filtro, setLivros, deletarLivro } = useContext(LivroContext)
 
 
-  const livrosFiltrados = livros.filter(livro => livro.titulo.toLowerCase().includes(filtro.toLowerCase()))
+  const livrosFiltrados = livros.filter(livro => livro.titulo.toLowerCase().includes((filtro || '').toLowerCase()))
+
+
 
   return (
     <BrowserRouter>
