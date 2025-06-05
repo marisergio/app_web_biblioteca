@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { api } from '../api/setupApi'
+import { ca } from "date-fns/locale";
 
 export const LivroContext = createContext({
     livros: [],
@@ -34,12 +35,16 @@ export function LivroProvider({ children }) {
         });
     }
 
-    function deletarLivro(id) {
-        
+    async function deletarLivro(id) {
+
+        try{
             const livrosFiltrados = livros.filter(livro => livro.id !== id);
             setLivros(livrosFiltrados);
-
-            //api.delete(`/livros/${id}`)
+            await api.delete(`/livros/${id}`);            
+        }catch (error) {
+            console.error('Erro ao deletar livro:', error);
+        }
+            
     };
 
     return (
