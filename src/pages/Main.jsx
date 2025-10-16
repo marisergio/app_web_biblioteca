@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import style from '../App.module.css'
-import { CardList } from './CardList'
+import { CardList } from '../componentes/CardList'
 
 export function Main({ livrosFiltrados }) {
 

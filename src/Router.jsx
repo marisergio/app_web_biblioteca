@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Leitor } from './pages/Leitor'
-import { Main } from './componentes/Main'
+import { Main } from './pages/Main'
 import { DefaultLayout } from './layouts/DefaultLayout'
 import { FormLivro } from './pages/FormLivro'
 
