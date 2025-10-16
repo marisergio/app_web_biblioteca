@@ -11,6 +11,7 @@ export function Router({ livrosFiltrados }) {
                 <Route path="/" element={<Main livrosFiltrados={livrosFiltrados} />} />
                 <Route path="/leitor" element={<Leitor />} />
                 <Route path="/formLivro" element={<FormLivro />} />
+                <Route path="/formLivro/:id" element={<FormLivro />} />
             </Route>
         </Routes>
 

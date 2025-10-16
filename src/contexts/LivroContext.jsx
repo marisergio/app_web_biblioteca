@@ -6,6 +6,7 @@ export const LivroContext = createContext({
     livros: [],
     setLivros: () => { },
     deletarLivro: () => { },
+    atualizarLivro: () => { },
     filtro: '',
     setFiltro: () => { }
 });
@@ -47,8 +48,19 @@ export function LivroProvider({ children }) {
             
     };
 
+    async function atualizarLivro(id, dadosAtualizados) {
+        try {
+            const response = await api.put(`/livros/${id}`, dadosAtualizados);
+            setLivros(prev => {
+                return prev.map(livro => livro.id === id ? dadosAtualizados : livro);
+            });
+        } catch (error) {
+            console.error('Erro ao atualizar livro:', error);
+        }
+    }
+
     return (
-        <LivroContext.Provider value={{ livros, filtro, setFiltro, addLivro, deletarLivro }}>
+        <LivroContext.Provider value={{ livros, filtro, setFiltro, addLivro, deletarLivro, atualizarLivro }}>
             {children}
         </LivroContext.Provider>
     )

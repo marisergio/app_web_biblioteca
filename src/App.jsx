@@ -8,7 +8,6 @@ function App() {
 
   const { livros, filtro, setLivros, deletarLivro } = useContext(LivroContext)
 
-
   const livrosFiltrados = livros.filter(livro => livro.titulo.toLowerCase().includes((filtro || '').toLowerCase()))
 
 
