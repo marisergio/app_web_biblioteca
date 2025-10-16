@@ -10,7 +10,7 @@ export function FormLivro() {
 
     const [message, setMessage] = useState('')
     const navigate = useNavigate()
-    const { addLivro, atualizarLivro } = useContext(LivroContext);
+    const { salvarLivro, atualizarLivro } = useContext(LivroContext);
     const { id } = useParams();
 
     const [formLivro, setFormLivro] = useState({ titulo: '', autor: '', editora: '', anoLancamento: '' })
@@ -35,12 +35,12 @@ export function FormLivro() {
         e.preventDefault()
 
         try {
-            const response = await api.post('/livros', {
+
+            setMessage('Livro salvo com sucesso')
+            await salvarLivro({
                 ...formLivro,
                 anoLancamento: Number(formLivro.anoLancamento)
-            })
-            setMessage('Livro salvo com sucesso')
-            addLivro({ id: response.data, ...formLivro });
+            });
 
             setTimeout(() => {
                 navigate('/');

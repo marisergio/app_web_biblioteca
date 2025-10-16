@@ -7,6 +7,7 @@ export const LivroContext = createContext({
     setLivros: () => { },
     deletarLivro: () => { },
     atualizarLivro: () => { },
+    salvarLivro: () => { },
     filtro: '',
     setFiltro: () => { }
 });
@@ -29,11 +30,31 @@ export function LivroProvider({ children }) {
         fetchLivros();
     }, []);
 
-    function addLivro(livro) {
-        setLivros(prev => {
-            const novosLivros = [...prev, livro];
+
+    async function salvarLivro(livro) {
+        try {
+            const response = await api.post('/livros', livro)
+            console.log('Livro salvo:', {id: response.data, ...livro});
+            setLivros(prev => {
+            const novosLivros = [...prev, {id: response.data, ...livro}];
             return novosLivros.sort((a, b) => a.titulo.localeCompare(b.titulo));
         });
+
+        } catch (error) {
+            console.error('Erro ao salvar livro:', error.response?.data || error.message);
+        }
+
+    }
+
+    async function atualizarLivro(id, dadosAtualizados) {
+        try {
+            const response = await api.put(`/livros/${id}`, dadosAtualizados);
+            setLivros(prev => {
+                return prev.map(livro => livro.id === id ? dadosAtualizados : livro);
+            });
+        } catch (error) {
+            console.error('Erro ao atualizar livro:', error);
+        }
     }
 
     async function deletarLivro(id) {
@@ -48,19 +69,8 @@ export function LivroProvider({ children }) {
             
     };
 
-    async function atualizarLivro(id, dadosAtualizados) {
-        try {
-            const response = await api.put(`/livros/${id}`, dadosAtualizados);
-            setLivros(prev => {
-                return prev.map(livro => livro.id === id ? dadosAtualizados : livro);
-            });
-        } catch (error) {
-            console.error('Erro ao atualizar livro:', error);
-        }
-    }
-
     return (
-        <LivroContext.Provider value={{ livros, filtro, setFiltro, addLivro, deletarLivro, atualizarLivro }}>
+        <LivroContext.Provider value={{ livros, filtro, setFiltro, salvarLivro, deletarLivro, atualizarLivro }}>
             {children}
         </LivroContext.Provider>
     )
